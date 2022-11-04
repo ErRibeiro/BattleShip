@@ -55,7 +55,7 @@ public:
         //If hit, shoot positions divisible by 2 so you can hit the most area with the NEAR mechanic
         if (shipsSunk <= 10)
         {
-            for (int n = 1; n <= 16; n++)
+            for (int n = 0; n <= 16; n++)
             {
                 for (int m = 1; m <= 16; m++)
                 {
@@ -65,6 +65,7 @@ public:
 
                     m++;
                 }
+                n++;
                 n++;
             }
         }
@@ -90,7 +91,7 @@ public:
         if (CheckOnTarget(x, y) == 2)
         {
             shipsSunk++;
-            board[x][y] = 1;
+            board[x][y] += 1;
             return 2;
         }
         else if (CheckOnTarget(x, y) == 1)
@@ -131,13 +132,14 @@ public:
         Vector2 v; //variable which changes every loop
         v.x = x;
         v.y = y;
+        spotsShot.push_back(v);
         // 2 = hit, 1 = near, 0 = miss
         if (CheckOnTarget(x, y) == 2)
         {
             if (board[x][y] !=1)
             {
                 shipsSunk++;
-                board[x][y] = 1;
+                board[x][y] += 1;
             }
             
             return 2;
