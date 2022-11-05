@@ -53,9 +53,7 @@ public:
     void Logic() {
         //Shoot middle first, then check for HIT, MISS, NEAR. 
         //If hit, shoot positions divisible by 2 so you can hit the most area with the NEAR mechanic
-        if (shipsSunk <= 10)
-        {
-            for (int n = 0; n <= 16; n++)
+            for (int n = 1; n <= 16; n++)
             {
                 for (int m = 1; m <= 16; m++)
                 {
@@ -64,16 +62,15 @@ public:
                     moves++;
 
                     m++;
+                    m++;
                 }
                 n++;
                 n++;
             }
-        }
             for (int index = 0; index < nearSpots.size(); index++)
             {
-                if (shipsSunk <= 10)
+                if (shipsSunk < 10)
                 {
-
                     ShootNear(nearSpots.at(index).x, nearSpots.at(index).y);
                 }
             }
@@ -91,7 +88,7 @@ public:
         if (CheckOnTarget(x, y) == 2)
         {
             shipsSunk++;
-            board[x][y] += 1;
+            board[x][y] ++;
             return 2;
         }
         else if (CheckOnTarget(x, y) == 1)
@@ -139,14 +136,14 @@ public:
             if (board[x][y] !=1)
             {
                 shipsSunk++;
-                board[x][y] += 1;
+                board[x][y] ++;
             }
             
             return 2;
         }
-        else if (CheckOnTarget(x, y) == 1)
+        else if (CheckOnTarget(x, y) == 1 )
         {
-            //nearSpots.push_back(v);
+            nearSpots.push_back(v);
             return 1;
         }
         else if (CheckOnTarget(x, y) == 0)
@@ -172,54 +169,54 @@ public:
         }
     }
     bool ShootNear(int x, int y) {
-        //right
-        if (ShootEnding(x+1, y) == 2 && NoRepeatShots(x + 1, y) == false)
-        {
-            moves++;
-            return true;
-        }
-        //left
-        if (ShootEnding(x - 1, y) == 2 && NoRepeatShots(x - 1, y) == false)
-        {
-            moves++;
-            return true;
-        }
-        //up
-        if (ShootEnding(x, y+1) == 2 && NoRepeatShots(x, y + 1) == false)
-        {
-            moves++;
-            return true;
-        }
-        //down
-        if (ShootEnding(x + 1, y-1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
-        {
-            moves++;
-            return true;
-        }
-        //up+right
-        if (ShootEnding(x + 1, y+1) == 2 && NoRepeatShots(x + 1, y + 1) == false)
-        {
-            moves++;
-            return true;
-        }
-        //down right
-        if (ShootEnding(x + 1, y-1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
-        {
-            moves++;
-            return true;
-        }
-        //up + left
-        if (ShootEnding(x - 1, y+1) == 2 && NoRepeatShots(x - 1, y + 1) == false)
-        {
-            moves++;
-            return true;
-        }
-        //down + left
-        if (ShootEnding(x - 1, y-1) == 2 && NoRepeatShots(x - 1, y - 1) == false)
-        {
-            moves++;
-            return true;
-        }
+            //right
+            if (ShootEnding(x + 1, y) == 2 && NoRepeatShots(x + 1, y) == false)
+            {
+                moves++;
+                return true;
+            }
+            //left
+            if (ShootEnding(x - 1, y) == 2 && NoRepeatShots(x - 1, y) == false)
+            {
+                moves++;
+                return true;
+            }
+            //up
+            if (ShootEnding(x, y + 1) == 2 && NoRepeatShots(x, y + 1) == false)
+            {
+                moves++;
+                return true;
+            }
+            //down
+            if (ShootEnding(x + 1, y - 1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
+            {
+                moves++;
+                return true;
+            }
+            //up+right
+            if (ShootEnding(x + 1, y + 1) == 2 && NoRepeatShots(x + 1, y + 1) == false)
+            {
+                moves++;
+                return true;
+            }
+            //down right
+            if (ShootEnding(x + 1, y - 1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
+            {
+                moves++;
+                return true;
+            }
+            //up + left
+            if (ShootEnding(x - 1, y + 1) == 2 && NoRepeatShots(x - 1, y + 1) == false)
+            {
+                moves++;
+                return true;
+            }
+            //down + left
+            if (ShootEnding(x - 1, y - 1) == 2 && NoRepeatShots(x - 1, y - 1) == false)
+            {
+                moves++;
+                return true;
+            }
     }
     int CheckAround(int x, int y) {
         if (hiddenBoard[x+1][y] == 1)
