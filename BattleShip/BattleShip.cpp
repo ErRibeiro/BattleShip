@@ -129,6 +129,7 @@ public:
         Vector2 v; //variable which changes every loop
         v.x = x;
         v.y = y;
+        moves++;
         spotsShot.push_back(v);
         // 2 = hit, 1 = near, 0 = miss
         if (CheckOnTarget(x, y) == 2)
@@ -172,49 +173,48 @@ public:
             //right
             if (ShootEnding(x + 1, y) == 2 && NoRepeatShots(x + 1, y) == false)
             {
-                moves++;
+                
                 return true;
             }
             //left
             if (ShootEnding(x - 1, y) == 2 && NoRepeatShots(x - 1, y) == false)
             {
-                moves++;
                 return true;
             }
             //up
             if (ShootEnding(x, y + 1) == 2 && NoRepeatShots(x, y + 1) == false)
             {
-                moves++;
+                
                 return true;
             }
             //down
             if (ShootEnding(x + 1, y - 1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
             {
-                moves++;
+                
                 return true;
             }
             //up+right
             if (ShootEnding(x + 1, y + 1) == 2 && NoRepeatShots(x + 1, y + 1) == false)
             {
-                moves++;
+               
                 return true;
             }
             //down right
             if (ShootEnding(x + 1, y - 1) == 2 && NoRepeatShots(x + 1, y - 1) == false)
             {
-                moves++;
+               
                 return true;
             }
             //up + left
             if (ShootEnding(x - 1, y + 1) == 2 && NoRepeatShots(x - 1, y + 1) == false)
             {
-                moves++;
+               
                 return true;
             }
             //down + left
             if (ShootEnding(x - 1, y - 1) == 2 && NoRepeatShots(x - 1, y - 1) == false)
             {
-                moves++;
+                
                 return true;
             }
     }
